@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Freelancer - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+
+    <style>
+        .axis {
+            font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .zipcode {
+            stroke: steelblue;
+            fill: #FFF;
+        }
+    </style>
+</head>
+
+<body id="page-top" class="index">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.0/math.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+    <script>
+        var closeModal = function(){
+            document.getElementById('close-modal').style.display = "none";
+            console.log("Im triyng");
+        }
+    </script>
+    <div class="register-modal" id="close-modal">
+        <div class="modal-body">
+            <p>
+                <span><center><b> Please wait untill the dataset is loaded.
+                    <br> Thank you for your understanding :)    </b></center><br></span>
+                <button onclick="closeModal();" id="closeModal" title="Close" class="closeModalButton">x</button>
+            </p>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Rami&Orhai Project</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Secret Lab</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container" id="maincontent" tabindex="-1">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <h1 class="name">Information Visualization</h1>
+                        <hr class="star-light">
+                        <span class="skills">Information Visualization Project</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Secret Lab</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <a onclick="increaseDecreaseMain();" href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/increasedecrease.png" class="img-responsive" alt="increasedecrease">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a onclick="crimeoccurencesMain();" href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/crimeoccurrences.png" class="img-responsive" alt="Slice of crimeoccurrences">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a onclick="crimeCorrelationMain();" href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/crimecorrelation.png" class="img-responsive" alt="Circus tent">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a onclick="policeEfficiencyMain();" href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a onclick="radarChartMain();" href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a onclick="HeatmapMain();" href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>This is our Information Visualization Project 2017 made by the masters of University of Haifa, Rami Bishara
+                        and the legendary Orhai Cohen.</p>
+                </div>
+                <div class="col-lg-4">
+                    <p>Visualizations about crimes in Chicago, USA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-12">
+                        <h3>Contact</h3>
+                        <p>Rami Bishara
+                            <br>bishara.rami@gmail.com</p>
+                        <p>Orhai Cohen
+                            <br>ocohen107@campus.haifa.ac.il</p>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Rami Bishara & Orhai Cohen - Information Visualization Project 2017.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content" id="modal1">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Increase&Decrease </h2>
+                            <hr class="star-primary">
+                            <p>Showing crime rate increment / decrement through time for each ward and each specific crime type.</p>
+                            <ul class="list-inline item-details">
+                                <li>Crime type:
+
+                                    <strong>
+                                        <select id="crimeTypes" onchange="createIncreaseDecreaseSVG();">
+                                                <option value="THEFT">THEFT</option>
+                                                <option value="BATTERY">BATTERY</option>
+                                                <option value="DECEPTIVE PRACTICE">DECEPTIVE PRACTICE</option>
+                                                <option value="ASSAULT">ASSAULT</option>
+                                                <option value="OTHER OFFENSE">OTHER OFFENSE</option>
+                                                <option value="CRIMINAL DAMAGE">CRIMINAL DAMAGE</option>
+                                                <option value="ROBBERY">ROBBERY</option>
+                                                <option value="MOTOR VEHICLE THEFT">MOTOR VEHICLE THEFT</option>
+                                                <option value="OFFENSE INVOLVING CHILDREN">OFFENSE INVOLVING CHILDREN</option>
+                                                <option value="BURGLARY">BURGLARY</option>
+                                                <option value="PROSTITUTION">PROSTITUTION</option>
+                                                <option value="CRIMINAL TRESPASS">CRIMINAL TRESPASS</option>
+                                                <option value="CRIM SEXUAL ASSAULT">CRIM SEXUAL ASSAULT</option>
+                                                <option value="HOMICIDE">HOMICIDE</option>
+                                                <option value="ARSON">ARSON</option>
+                                                <option value="WEAPONS VIOLATION">WEAPONS VIOLATION</option>
+                                                <option value="PUBLIC PEACE VIOLATION">PUBLIC PEACE VIOLATION</option>
+                                                <option value="NARCOTICS">NARCOTICSE</option>
+                                                <option value="LIQUOR LAW VIOLATION">LIQUOR LAW VIOLATION</option>
+                                                <option value="SEX OFFENSE">SEX OFFENSE</option>
+                                                <option value="GAMBLING">GAMBLING</option>
+                                                <option value="STALKING">STALKING</option>
+                                                <option value="INTERFERENCE WITH PUBLIC OFFICER">INTERFERENCE WITH PUBLIC OFFICER</option>
+                                                <option value="KIDNAPPING">KIDNAPPING</option>
+                                                <option value="INTIMIDATION">INTIMIDATION</option>
+                                                <option value="CONCEALED CARRY LICENSE VIOLATION">CONCEALED CARRY LICENSE VIOLATION</option>
+                                                <option value="OBSCENITY">OBSCENITY</option>
+                                                <option value="NON-CRIMINAL">NON-CRIMINAL</option>
+                                                <option value="HUMAN TRAFFICKING">HUMAN TRAFFICKING</option>
+                                                <option value="PUBLIC INDECENCY">PUBLIC INDECENCY</option>
+                                                <option value="OTHER NARCOTIC VIOLATION">OTHER NARCOTIC VIOLATION</option>
+                                                <option value="NON-CRIMINAL (SUBJECT SPECIFIED)">NON-CRIMINAL (SUBJECT SPECIFIED)</option>
+                                                <option value="ALL">ALL CRIME TYPES</option>
+
+                                        </select>
+                                    </strong>
+                                </li>
+                                <li>Ward number:
+                                    <strong><select id="wardNumber" onchange="createIncreaseDecreaseSVG();">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                                <option value="32">32</option>
+                                                <option value="33">33</option>
+                                                <option value="34">34</option>
+                                                <option value="35">35</option>
+                                                <option value="36">36</option>
+                                                <option value="37">37</option>
+                                                <option value="38">38</option>
+                                                <option value="39">39</option>
+                                                <option value="40">40</option>
+                                                <option value="41">41</option>
+                                                <option value="42">42</option>
+                                                <option value="43">43</option>
+                                                <option value="44">44</option>
+                                                <option value="45">45</option>
+                                                <option value="46">46</option>
+                                                <option value="47">47</option>
+                                                <option value="48">48</option>
+                                                <option value="49">49</option>
+                                                <option value="50">50</option>
+                                                <option value="ALL">ALL WARDS</option>
+                                            </select>
+                                    </strong>
+                                </li>
+
+                            </ul>
+                            <div class="colorStats">
+                                <span style="color:red"><b>High</b></span> <br>
+                                <span style="color:blue"><b>Medium</b></span><br>
+                                <span style="color:green"><b>Low</b></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content" id="modal2">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Crime Occurrences</h2>
+                            <hr class="star-primary" <p> Showing crimes occurrences for all the map of Chicago by visualizing all crimes types differed
+                            by color. <br>
+                            <small style="color: red;"><b>* Note:</b> Default values for crime types is "ALL".<br> And you can zoom out/in the map as you want.</small>
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li> <input onchange="changeCheckBoxes(false);" type="checkbox" value="ALL" id="ALL"
+                                    checked><big><b>ALL CRIME TYPES</b></big></input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="THEFT"
+                                    id="THEFT">THEFT</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="BATTERY"
+                                    id="BATTERY">BATTERY</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="DECEPTIVE PRACTICE"
+                                    id="DECEPTIVE_PRACTICE">DECEPTIVE PRACTICE</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="ASSAULT"
+                                    id="ASSAULT">ASSAULT</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="OTHER OFFENSE"
+                                    id="OTHER_OFFENSE">OTHER OFFENSE</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="CRIMINAL_DAMAGE"
+                                    id="CRIMINAL_DAMAGE">CRIMINAL DAMAGE</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="ROBBERY"
+                                    id="ROBBERY">ROBBERY</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="MOTOR_VEHICLE_THEFT"
+                                    id="MOTOR_VEHICLE_THEFT">MOTOR VEHICLE THEFT</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="OFFENSE_INVOLVING_CHILDREN"
+                                    id="OFFENSE_INVOLVING_CHILDREN">OFFENSE INVOLVING CHILDREN</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="BURGLARY"
+                                    id="BURGLARY">BURGLARY</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="PROSTITUTION"
+                                    id="PROSTITUTION">PROSTITUTION</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="CRIMINAL_TRESPASS"
+                                    id="CRIMINAL_TRESPASS">CRIMINAL TRESPASS</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="CRIM SEXUAL ASSAULT"
+                                    id="CRIM_SEXUAL_ASSAULT">CRIM SEXUAL ASSAULT</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="HOMICIDE"
+                                    id="HOMICIDE">HOMICIDE</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="ARSON"
+                                    id="ARSON">ARSON</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="WEAPONSVIOLATION"
+                                    id="WEAPONS_VIOLATION">WEAPONS VIOLATION</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="PUBLIC PEACE VIOLATION"
+                                    id="PUBLIC_PEACE_VIOLATION">PUBLIC PEACE VIOLATION</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="NARCOTICS"
+                                    id="NARCOTICS">NARCOTICSE</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="LIQUOR LAW VIOLATION"
+                                    id="LIQUOR_LAW_VIOLATION">LIQUOR LAW VIOLATION</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="SEX OFFENSE"
+                                    id="SEX_OFFENSE">SEX OFFENSE</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="GAMBLING"
+                                    id="GAMBLING">GAMBLING</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="STALKING"
+                                    id="STALKING">STALKING</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="INTERFERENCE WITH PUBLIC OFFICER"
+                                    id="INTERFERENCE_WITH_PUBLIC_OFFICER">INTERFERENCE WITH PUBLIC
+                                OFFICER</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="KIDNAPPING"
+                                    id="KIDNAPPING">KIDNAPPING</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="INTIMIDATION"
+                                    id="INTIMIDATION">INTIMIDATION</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="CONCEALED CARRY LICENSE VIOLATION"
+                                    id="CONCEALED_CARRY_LICENSE_VIOLATION">CONCEALED CARRY LICENSE
+                                VIOLATION</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="OBSCENITY"
+                                    id="OBSCENITY">OBSCENITY</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="HUMAN TRAFFICKING"
+                                    id="HUMAN_TRAFFICKING">HUMAN TRAFFICKING</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="NON-CRIMINAL"
+                                    id="NON_CRIMINAL">NON-CRIMINAL</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="PUBLIC INDECENCY"
+                                    id="PUBLIC_INDECENCY">PUBLIC INDECENCY</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="OTHER NARCOTIC VIOLATION"
+                                    id="OTHER_NARCOTIC_VIOLATION">OTHER NARCOTIC VIOLATION</input>
+                            </li>
+                            <li> <input onchange="changeCheckBoxes(true);" type="checkbox" value="NON-CRIMINAL (SUBJECT SPECIFIED)"
+                                    id="NON_CRIMINAL_SUBJECT_SPECIFIED">NON-CRIMINAL (SUBJECT SPECIFIED)</input>
+                            </li>
+                            <button id="filterButton" onclick="crimeoccurencesMain();  ">Filter</button>
+                            </ul>
+
+                            <!-- <div id="divDropdown">
+                                <div id="Wwidth">
+                                    <dl class="dropdown">
+                                        <button id="filterButton" onclick="crimeoccurencesMain();  ">Filter</button>
+                                        <dt>
+                                            <a id="dropdownA" href="#">
+                                                <span id="selectTitle" class="hida">Select Crime Types</span>
+                                                <p class="multiSel"></p>
+                                                </a>
+                                        </dt>
+
+                                        <div id="multiSelectDiv">
+                                            <dd>
+                                                <div class="mutliSelect">
+                                                    <ul>
+
+
+                                                    </ul>
+                                                </div>
+                                            </dd>
+                                        </div>
+
+                                    </dl>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content" id="modal3">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Crime Correlation</h2>
+                            <hr class="star-primary">
+                            <p>Showing the relation between two types of crimes by showing all the crimes that happened in the
+                                same ward.
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li><span style="color:Magenta"><b>First Crime type:</b></span>
+
+                                    <strong>
+                                        <select id="crimeTypes1Correlation" onchange="createCrimeCorrelationSVG(); hideSimilarOnSecondSelect();">
+                                                <option value="THEFT">THEFT</option>
+                                                <option value="BATTERY" style="display:none;">BATTERY</option>
+                                                <option value="DECEPTIVE PRACTICE">DECEPTIVE PRACTICE</option>
+                                                <option value="ASSAULT">ASSAULT</option>
+                                                <option value="OTHER OFFENSE">OTHER OFFENSE</option>
+                                                <option value="CRIMINAL DAMAGE">CRIMINAL DAMAGE</option>
+                                                <option value="ROBBERY">ROBBERY</option>
+                                                <option value="MOTOR VEHICLE THEFT">MOTOR VEHICLE THEFT</option>
+                                                <option value="OFFENSE INVOLVING CHILDREN">OFFENSE INVOLVING CHILDREN</option>
+                                                <option value="BURGLARY">BURGLARY</option>
+                                                <option value="PROSTITUTION">PROSTITUTION</option>
+                                                <option value="CRIMINAL TRESPASS">CRIMINAL TRESPASS</option>
+                                                <option value="CRIM SEXUAL ASSAULT">CRIM SEXUAL ASSAULT</option>
+                                                <option value="HOMICIDE">HOMICIDE</option>
+                                                <option value="ARSON">ARSON</option>
+                                                <option value="WEAPONS VIOLATION">WEAPONS VIOLATION</option>
+                                                <option value="PUBLIC PEACE VIOLATION">PUBLIC PEACE VIOLATION</option>
+                                                <option value="NARCOTICS">NARCOTICSE</option>
+                                                <option value="LIQUOR LAW VIOLATION">LIQUOR LAW VIOLATION</option>
+                                                <option value="SEX OFFENSE">SEX OFFENSE</option>
+                                                <option value="GAMBLING">GAMBLING</option>
+                                                <option value="STALKING">STALKING</option>
+                                                <option value="INTERFERENCE WITH PUBLIC OFFICER">INTERFERENCE WITH PUBLIC OFFICER</option>
+                                                <option value="KIDNAPPING">KIDNAPPING</option>
+                                                <option value="INTIMIDATION">INTIMIDATION</option>
+                                                <option value="CONCEALED CARRY LICENSE VIOLATION">CONCEALED CARRY LICENSE VIOLATION</option>
+                                                <option value="OBSCENITY">OBSCENITY</option>
+                                                <option value="NON-CRIMINAL">NON-CRIMINAL</option>
+                                                <option value="HUMAN TRAFFICKING">HUMAN TRAFFICKING</option>
+                                                <option value="PUBLIC INDECENCY">PUBLIC INDECENCY</option>
+                                                <option value="OTHER NARCOTIC VIOLATION">OTHER NARCOTIC VIOLATION</option>
+                                                <option value="NON-CRIMINAL (SUBJECT SPECIFIED)">NON-CRIMINAL (SUBJECT SPECIFIED)</option>
+
+                                        </select>
+                                    </strong>
+                                </li>
+                                <br>
+                                <li><span style="color:DarkGreen"><b>Second Crime type:</b></span>
+
+                                    <strong>
+                                        <select id="crimeTypes2Correlation" onchange="createCrimeCorrelationSVG(); hideSimilarOnFirstSelect();">
+                                                <option value="BATTERY">BATTERY</option>
+                                                <option value="THEFT" style="display:none;">THEFT</option>
+                                                <option value="DECEPTIVE PRACTICE">DECEPTIVE PRACTICE</option>
+                                                <option value="ASSAULT">ASSAULT</option>
+                                                <option value="OTHER OFFENSE">OTHER OFFENSE</option>
+                                                <option value="CRIMINAL DAMAGE">CRIMINAL DAMAGE</option>
+                                                <option value="ROBBERY">ROBBERY</option>
+                                                <option value="MOTOR VEHICLE THEFT">MOTOR VEHICLE THEFT</option>
+                                                <option value="OFFENSE INVOLVING CHILDREN">OFFENSE INVOLVING CHILDREN</option>
+                                                <option value="BURGLARY">BURGLARY</option>
+                                                <option value="PROSTITUTION">PROSTITUTION</option>
+                                                <option value="CRIMINAL TRESPASS">CRIMINAL TRESPASS</option>
+                                                <option value="CRIM SEXUAL ASSAULT">CRIM SEXUAL ASSAULT</option>
+                                                <option value="HOMICIDE">HOMICIDE</option>
+                                                <option value="ARSON">ARSON</option>
+                                                <option value="WEAPONS VIOLATION">WEAPONS VIOLATION</option>
+                                                <option value="PUBLIC PEACE VIOLATION">PUBLIC PEACE VIOLATION</option>
+                                                <option value="NARCOTICS">NARCOTICSE</option>
+                                                <option value="LIQUOR LAW VIOLATION">LIQUOR LAW VIOLATION</option>
+                                                <option value="SEX OFFENSE">SEX OFFENSE</option>
+                                                <option value="GAMBLING">GAMBLING</option>
+                                                <option value="STALKING">STALKING</option>
+                                                <option value="INTERFERENCE WITH PUBLIC OFFICER">INTERFERENCE WITH PUBLIC OFFICER</option>
+                                                <option value="KIDNAPPING">KIDNAPPING</option>
+                                                <option value="INTIMIDATION">INTIMIDATION</option>
+                                                <option value="CONCEALED CARRY LICENSE VIOLATION">CONCEALED CARRY LICENSE VIOLATION</option>
+                                                <option value="OBSCENITY">OBSCENITY</option>
+                                                <option value="NON-CRIMINAL">NON-CRIMINAL</option>
+                                                <option value="HUMAN TRAFFICKING">HUMAN TRAFFICKING</option>
+                                                <option value="PUBLIC INDECENCY">PUBLIC INDECENCY</option>
+                                                <option value="OTHER NARCOTIC VIOLATION">OTHER NARCOTIC VIOLATION</option>
+                                                <option value="NON-CRIMINAL (SUBJECT SPECIFIED)">NON-CRIMINAL (SUBJECT SPECIFIED)</option>
+
+                                        </select>
+                                    </strong>
+                                </li>
+                                <br>
+                                <li><span><b>Ward number:</b></span>
+                                    <strong><select id="wardNumber3" onchange="createCrimeCorrelationSVG();">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                                <option value="32">32</option>
+                                                <option value="33">33</option>
+                                                <option value="34">34</option>
+                                                <option value="35">35</option>
+                                                <option value="36">36</option>
+                                                <option value="37">37</option>
+                                                <option value="38">38</option>
+                                                <option value="39">39</option>
+                                                <option value="40">40</option>
+                                                <option value="41">41</option>
+                                                <option value="42">42</option>
+                                                <option value="43">43</option>
+                                                <option value="44">44</option>
+                                                <option value="45">45</option>
+                                                <option value="46">46</option>
+                                                <option value="47">47</option>
+                                                <option value="48">48</option>
+                                                <option value="49">49</option>
+                                                <option value="50">50</option>
+                                                <option value="ALL">ALL WARDS</option>
+                                            </select>
+                                    </strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content" id="modal4">
+
+            <div class="close-modal" data-dismiss="modal" onclick="removeSVG4();">
+                <div class="lr">
+                    <div class="rl">
+
+                    </div>
+                </div>
+                <!-- <button onclick="updatePie();" >change pie</intput> -->
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Police Efficiency</h2>
+                            <hr class="star-primary">
+                            <p>Showing the police effiency in each ward where arrest rate is the indication.
+                                <br>
+                                <span style="color:LimeGreen">Number of crimes that the crimanal was arrested.</span>
+                                <br>
+                                <span style="color: OrangeRed">Number of crimes that the crimanal was not arrested.</span>
+                                <br>
+                                <span><b><i>Hover with mouse to see ward's details.</i></b></span>
+                            </p>
+                            <ul class="list-inline item-details">
+                                <li><span style="text-decoration: underline">Ward Number: </span>
+                                    <b><span id="modal4wardnumber"></span></b>
+                                </li>
+                                <li><span style="text-decoration: underline">Total Crimes: </span>
+                                    <b><span id="modal4totalcrimes"></span></b>
+                                </li>
+                                <li>
+                                    <span style="text-decoration: italic">Ratio of arrested in total crimes: </span>
+                                    <b><i><span class="fraction" id="modal4ratio" style="text-anchor:middle">9/12</span></i></b>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content" id="modal5">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Wards Ranking</h2>
+                            <hr class="star-primary">
+                            <p>Showing the ranking of wards by: <br>
+                                1. Ranking the ward by using weights for each type of crime, whether the crime is domestic or not and how many arrests where made.
+                                <br>
+                                2. The number of crimes in each ward together with number of arrests and number of domestic crimes.
+
+                            </p>
+                                <ul class="list-inline item-details">
+                                    <li><span><b>Show by:</b></span>
+                                        <strong><select id="modal5selector" onchange="radarChartMain();">
+                                                    <option value="ward_rank">Ward Rank</option>
+                                                    <option value="total_crimes">Total Crimes</option>
+                                                </select>
+                                        </strong>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content" id="modal6">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Crime/Hour Heatmap</h2>
+                            <hr class="star-primary">
+                            <p>Showing the crime volume by color for each hour of the day. The darkest color indicates highest
+                                level of crime occurrences and lightest color indicates the lowest level of crime occurences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="modal.js"></script>
+    <script src="dataset.js"></script>
+    <!-- <script src="js/freelancer.min.js"></script> -->
+    <script src="increaseDecrease.js"></script>
+    <script src="crimeoccurrences.js"></script>
+    <script src="crimecorrelation.js"></script>
+    <script src="policeEfficiency.js"></script>
+    <script src="radarChart.js"></script>
+    <script src="CrimeHourHeatmap.js"></script>
+
+</body>
+
+</html>
